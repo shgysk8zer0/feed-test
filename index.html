@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="no-js smooth-scroll border-box font-main color-default background-primary">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>Feed Test</title>
+		<link rel="icon" href="img/adwaita-icons/mimetypes/application-rss+xml.svg" type="image/svg+xml" sizes="any" />
+		<script type="module" src="js/index.js" async=""></script>
+		<link rel="stylesheet" href="css/styles/index.css" media="all" />
+	</head>
+	<body>
+		<header class="sticky top shadow background-primary">
+			<button type="button" title="Add new Feed Subscription" data-show-modal="#subscribe-dialog">
+				<svg class="current-color icon">
+					<use xlink:href="img/icons.svg#rss" />
+				</svg>
+			</button>
+		</header>
+		<main>
+			<feed-list>
+				<feed-entry url="https://shgysk8zer0.github.io/feed.rss"></feed-entry>
+			</feed-list>
+		</main>
+		<footer>
+			<copyright-element>
+				<a href="https://shgysk8zer0.github.io" target="_blank" rel="noopener external" slot="author">Chris Zuber</a>
+			</copyright-element>
+		</footer>
+		<dialog id="subscribe-dialog" class="card animation-speed-normal animation-ease-in-out fadeInDown">
+			<form name="subscribe" is="feed-form">
+				<label for="feed-url" title="Feed URL">
+					<svg class="current-color icon">
+						<use xlink:href="img/icons.svg#link" />
+					</svg>
+				</label>
+				<input type="url" name="url" id="feed-url" placeholder="http://example.com/feed.rss" list="feed-suggestions" autocomplete="off" required="" />
+				<datalist id="feed-suggestions">
+					<option value="https://shgysk8zer0.github.io/feed.rss" />
+				</datalist>
+				<button type="submit" title="Subscribe">
+					<svg class="current-color icon">
+						<use xlink:href="img/icons.svg#plus" />
+					</svg>
+				</button>
+				<button type="reset" title="Cancel" data-close="#subscribe-dialog">
+					<svg class="current-color icon">
+						<use xlink:href="img/icons.svg#edit-clear" />
+					</svg>
+				</button>
+			</form>
+		</dialog>
+		<template id="feed-entry-template">
+			<details class="feed-entry card">
+				<summary>
+					<h3 class="center">
+						<a href="" target="_blank" rel="noopener external">
+							<span data-field="title"></span>
+						</a>
+						<button type="button" title="Unsubscribe" data-action="unsubscribe">
+							<svg class="current-color icon">
+								<use xlink:href="img/icons.svg#x" />
+							</svg>
+						</button>
+					</h3>
+				</summary>
+				<div class="feed-items"></div>
+			</details>
+		</template>
+		<template id="feed-item-template">
+			<div class="feed-item card">
+				<h5><slot name="title"></slot></h5>
+				<i>
+					<span>Published:&nbsp;</span>
+					<slot name="published"></slot>
+				</i>
+			</div>
+		</template>
+		<template id="copyright-template">
+			<span>&copy;&nbsp;<slot name="year"></slot></span>
+			<slot name="author"></slot>
+		</template>
+	</body>
+</html>

@@ -1,0 +1,5 @@
+node_modules/
+*.min.*
+*.map
+*.log
+img/icons.svg

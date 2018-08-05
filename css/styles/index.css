@@ -1,0 +1,21 @@
+@charset "UTF-8";
+@import url("./vars.css");
+@import url("../core-css/viewport.css");
+@import url("../core-css/rem.css");
+@import url("../core-css/element.css");
+@import url("../core-css/class-rules.css");
+@import url("../animate.css/animate.css");
+@import url("../core-css/animations.css");
+@import url("../core-css/fonts.css");
+
+dialog {
+	border: none;
+}
+
+[type="reset"] {
+	background: rgb(187, 25, 25);
+}
+
+[type="reset"]:active {
+	background: rgb(108, 6, 6);
+}
