@@ -1,11 +1,12 @@
 export default class FeedItem extends HTMLElement {
-	constructor({title, url, published} = {}) {
+	constructor({title, url, published}) {
 		super();
 		const template = document.getElementById('feed-item-template').content.cloneNode(true);
 		const link = document.createElement('a');
 		const time = document.createElement('time');
 		link.href = url;
 		link.textContent = title;
+		link.target = '_blank';
 		link.slot = 'title';
 		time.textContent = published.toLocaleString();
 		time.dateTime = published.toISOString();
