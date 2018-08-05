@@ -10,6 +10,7 @@ export default class FeedForm extends HTMLFormElement {
 				event.target.reset();
 				event.target.closest('dialog[open]').close();
 			} catch (error) {
+				/* eslint no-console: 0 */
 				console.error(error);
 			}
 		});
