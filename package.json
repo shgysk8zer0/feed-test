@@ -7,7 +7,7 @@
     "build:icons": "svg-sprite-generate -c icons.csv -o img/icons.svg",
     "postinstal": "git submodule update --init --recursive && npm run build:icons",
     "start": "python -m SimpleHTTPServer 8000",
-    "test": "eslint . && stylelint ."
+    "test": "eslint . && stylelint css/**/.css"
   },
   "keywords": [
     "rss",
