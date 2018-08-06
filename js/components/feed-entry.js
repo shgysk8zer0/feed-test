@@ -12,9 +12,17 @@ async function parseFeed(feedEl) {
 	const doc = parser.parseFromString(xml, 'application/xml');
 	const title = doc.querySelector('channel > title').textContent;
 	const link = doc.querySelector('channel > link').textContent;
-	template.querySelector('[href]').href = link;
-	template.querySelector('[data-field="title"]').textContent = title;
+	const name = document.createElement('a');
+	const container = document.createElement('div');
+
+	name.target = '_blank';
+	name.href = link;
+	name.textContent = title;
+	name.slot = 'feedName';
+	container.slot = 'feedItems';
+
 	template.querySelector('[data-action="unsubscribe"]').addEventListener('click', () => feedEl.list.remove(feedEl.url));
+
 	const items = [...doc.querySelectorAll('item')].map(item => {
 		const title = item.querySelector('title').textContent;
 		const url = item.querySelector('link').textContent;
@@ -22,14 +30,16 @@ async function parseFeed(feedEl) {
 		return new FeedItem({title, url, published});
 	});
 
-	template.querySelector('.feed-items').append(...items);
+	container.append(...items);
+	feedEl.append(name, container);
 
-	feedEl.append(template);
+	feedEl.shadowRoot.append(template);
 }
 
 export default class FeedEntry extends HTMLElement {
 	constructor() {
 		super();
+		this.attachShadow({mode: 'open'});
 		if (this.hasAttribute('url')) {
 			parseFeed(this);
 		}

@@ -50,12 +50,22 @@
 			</form>
 		</dialog>
 		<template id="feed-entry-template">
+			<style>
+				@import url("css/core-css/element.css");
+				@import url("css/core-css/class-rules.css");
+				@import url("css/core-css/fonts.css");
+				@import url("css/animate.css/animate.css");
+				@import url("css/core-css/animations.css");
+
+				.feed-entry {
+					--button-background: rgb(150, 11, 30);
+					--button-active-background: rgb(83, 3, 14);
+				}
+			</style>
 			<details class="feed-entry card">
 				<summary>
-					<h3 class="center">
-						<a href="" target="_blank" rel="noopener external">
-							<span data-field="title"></span>
-						</a>
+					<h3 class="center inline-block">
+						<slot name="feedName"></slot>
 						<button type="button" title="Unsubscribe" data-action="unsubscribe">
 							<svg class="current-color icon">
 								<use xlink:href="img/icons.svg#x" />
@@ -63,10 +73,17 @@
 						</button>
 					</h3>
 				</summary>
-				<div class="feed-items"></div>
+				<slot name="feedItems"></slot>
 			</details>
 		</template>
 		<template id="feed-item-template">
+			<style>
+				@import url("css/core-css/element.css");
+				@import url("css/core-css/class-rules.css");
+				@import url("css/core-css/fonts.css");
+				@import url("css/animate.css/animate.css");
+				@import url("css/core-css/animations.css");
+			</style>
 			<div class="feed-item card">
 				<h5><slot name="title"></slot></h5>
 				<i>

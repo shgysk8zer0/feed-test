@@ -12,6 +12,6 @@ export default class FeedItem extends HTMLElement {
 		time.dateTime = published.toISOString();
 		time.slot = 'published';
 		this.append(link, time);
-		this.attachShadow({mode: 'open'}).append(template);
+		this.attachShadow({mode: 'closed'}).append(template);
 	}
 }
