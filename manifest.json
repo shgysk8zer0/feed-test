@@ -1,0 +1,20 @@
+{
+	"version": "1.0.0",
+	"name": "WebComponent Feed Aggregator",
+	"short_name": "Feed Aggregator",
+	"description": "A feed aggregator built using Web Components",
+	"start_url": "/",
+	"lang": "en",
+	"display": "standalone",
+	"theme_color": "#343434",
+	"background_color": "#FEFEFE",
+	"icons": [{
+    "src": "/img/adwaita-icons/mimetypes/application-rss+xml.svg",
+    "sizes": "any",
+    "type": "image/svg+xml"
+  }],
+	"developer": {
+		"name": "Chris Zuber",
+		"url": "https://shgysk8zer0.github.io"
+	}
+}

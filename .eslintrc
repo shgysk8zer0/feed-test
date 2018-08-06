@@ -28,6 +28,8 @@
     },
     "globals": {
         "URLSearchParams": false,
-        "browser": false
+        "browser": false,
+        "clients": false,
+        "skipWaiting": false
     }
 }
